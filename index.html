@@ -2,421 +2,217 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#070b14">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>TiGdeTi — Геолокация</title>
+
+<title>Gootoo — Местоположение</title>
 
 <style>
-:root{
---bg:#070b14;
---card:rgba(17,24,39,.72);
---card-border:rgba(255,255,255,.10);
---text:#fff;
---muted:#94a3b8;
---accent:#00e5ff;
---accent-2:#7c3aed;
---radius:28px;
-}
-
 *{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
-}
-
-html,body{
-margin:0;
-padding:0;
-width:100%;
-min-height:100%;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
 body{
-min-height:100vh;
-min-height:100dvh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-color:var(--text);
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;
-background:
-radial-gradient(circle at 15% 15%,rgba(0,229,255,.16),transparent 32%),
-radial-gradient(circle at 85% 80%,rgba(124,58,237,.18),transparent 35%),
-linear-gradient(145deg,#050810,#0a1020 48%,#060913);
-overflow-x:hidden;
-}
-
-.background{
-position:fixed;
-inset:0;
-overflow:hidden;
-pointer-events:none;
-z-index:0;
-}
-
-.orb{
-position:absolute;
-width:280px;
-height:280px;
-border-radius:50%;
-filter:blur(80px);
-opacity:.18;
-animation:float 10s ease-in-out infinite;
-}
-
-.orb.one{
-top:-120px;
-left:-100px;
-background:#00e5ff;
-}
-
-.orb.two{
-right:-120px;
-bottom:-120px;
-background:#7c3aed;
-animation-delay:-4s;
-}
-
-@keyframes float{
-0%,100%{transform:translate3d(0,0,0)}
-50%{transform:translate3d(25px,-20px,0)}
-}
-
-.app{
-position:relative;
-z-index:1;
-width:100%;
-max-width:440px;
-animation:appear .7s ease both;
-}
-
-@keyframes appear{
-from{opacity:0;transform:translateY(18px) scale(.98)}
-to{opacity:1;transform:translateY(0) scale(1)}
+  margin:0;
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(0,229,255,.18),transparent 32%),
+    radial-gradient(circle at 85% 85%,rgba(124,58,237,.20),transparent 35%),
+    linear-gradient(145deg,#050810,#0a1020,#060913);
 }
 
 .card{
-position:relative;
-padding:28px 22px 22px;
-border:1px solid var(--card-border);
-border-radius:var(--radius);
-background:var(--card);
-backdrop-filter:blur(24px);
--webkit-backdrop-filter:blur(24px);
-box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);
-overflow:hidden;
-}
-
-.card:before{
-content:"";
-position:absolute;
-top:0;
-left:10%;
-right:10%;
-height:1px;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  width:100%;
+  max-width:430px;
+  padding:30px 22px 22px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:28px;
+  background:rgba(17,24,39,.78);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
 }
 
 .logo{
-width:72px;
-height:72px;
-margin:2px auto 18px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:22px;
-font-size:32px;
-background:linear-gradient(145deg,rgba(0,229,255,.22),rgba(124,58,237,.22));
-border:1px solid rgba(255,255,255,.12);
-box-shadow:0 0 40px rgba(0,229,255,.12),inset 0 1px 0 rgba(255,255,255,.12);
-animation:logoPulse 3s ease-in-out infinite;
+  width:74px;
+  height:74px;
+  margin:0 auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:22px;
+  font-size:34px;
+  background:linear-gradient(145deg,rgba(0,229,255,.2),rgba(124,58,237,.25));
+  border:1px solid rgba(255,255,255,.12);
 }
 
-@keyframes logoPulse{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-4px)}
-}
-
-.brand{
-margin:0;
-text-align:center;
-font-size:32px;
-line-height:1.1;
-font-weight:800;
-letter-spacing:-1px;
-background:linear-gradient(90deg,#fff,#b8f7ff,#fff);
--webkit-background-clip:text;
-background-clip:text;
-color:transparent;
+h1{
+  margin:0;
+  text-align:center;
+  font-size:32px;
+  letter-spacing:-1px;
 }
 
 .subtitle{
-margin:10px 0 0;
-text-align:center;
-color:var(--muted);
-font-size:15px;
-line-height:1.55;
+  margin:10px 0 0;
+  text-align:center;
+  color:#94a3b8;
+  font-size:15px;
+  line-height:1.5;
 }
 
-.permission{
-margin-top:24px;
-padding:16px;
-display:flex;
-gap:13px;
-align-items:flex-start;
-border-radius:18px;
-background:rgba(255,255,255,.045);
-border:1px solid rgba(255,255,255,.07);
+.notice{
+  margin-top:24px;
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.07);
+  color:#cbd5e1;
+  font-size:13px;
+  line-height:1.5;
 }
 
-.permission-icon{
-flex:0 0 auto;
-width:38px;
-height:38px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:12px;
-background:rgba(0,229,255,.10);
-font-size:18px;
+button{
+  width:100%;
+  margin-top:20px;
+  padding:17px;
+  border:0;
+  border-radius:17px;
+  color:#031016;
+  background:linear-gradient(135deg,#67f8ff,#00d9ee,#72e8ff);
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
 }
 
-.permission-title{
-margin:0 0 4px;
-font-size:14px;
-font-weight:700;
-}
-
-.permission-text{
-margin:0;
-color:var(--muted);
-font-size:12px;
-line-height:1.45;
-}
-
-.location-button{
-position:relative;
-width:100%;
-margin-top:20px;
-padding:17px 20px;
-border:0;
-border-radius:17px;
-color:#031016;
-background:linear-gradient(135deg,#67f8ff,#00d9ee 45%,#72e8ff);
-font-size:16px;
-font-weight:800;
-cursor:pointer;
-box-shadow:0 12px 30px rgba(0,229,255,.18);
-transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
-overflow:hidden;
-}
-
-.location-button:active{
-transform:scale(.975);
-}
-
-.location-button:disabled{
-opacity:.65;
-cursor:default;
-box-shadow:none;
+button:disabled{
+  opacity:.6;
 }
 
 .status{
-min-height:24px;
-margin-top:18px;
-text-align:center;
-font-size:13px;
-line-height:1.5;
-color:var(--muted);
+  min-height:24px;
+  margin-top:18px;
+  text-align:center;
+  color:#94a3b8;
+  font-size:13px;
 }
 
-.status.success{
-color:#4ade80;
+.success{
+  color:#4ade80;
 }
 
-.status.error{
-color:#fb7185;
-}
-
-.status.loading{
-color:#67e8f9;
-}
-
-.spinner{
-display:inline-block;
-width:16px;
-height:16px;
-margin-right:7px;
-vertical-align:-3px;
-border:2px solid rgba(103,232,249,.25);
-border-top-color:#67e8f9;
-border-radius:50%;
-animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-to{transform:rotate(360deg)}
+.error{
+  color:#fb7185;
 }
 
 .result{
-display:none;
-margin-top:18px;
-animation:resultAppear .4s ease both;
+  display:none;
+  margin-top:18px;
+  padding:15px;
+  border-radius:17px;
+  background:rgba(255,255,255,.045);
 }
 
-.result.visible{
-display:block;
+.result.show{
+  display:block;
 }
 
-@keyframes resultAppear{
-from{opacity:0;transform:translateY(8px)}
-to{opacity:1;transform:translateY(0)}
+.row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
 
-.result-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
+.row:last-child{
+  border-bottom:0;
 }
 
-.result-item{
-padding:13px;
-border-radius:15px;
-background:rgba(255,255,255,.045);
-border:1px solid rgba(255,255,255,.06);
+.label{
+  color:#64748b;
 }
 
-.result-label{
-display:block;
-margin-bottom:5px;
-color:#64748b;
-font-size:10px;
-text-transform:uppercase;
-letter-spacing:.6px;
-}
-
-.result-value{
-display:block;
-color:#e2e8f0;
-font-size:13px;
-font-weight:700;
-word-break:break-word;
+.value{
+  color:#e2e8f0;
+  font-weight:700;
+  text-align:right;
 }
 
 .footer{
-margin-top:17px;
-text-align:center;
-color:#64748b;
-font-size:11px;
-line-height:1.5;
-}
-
-@media(max-width:380px){
-body{padding:12px}
-.card{padding:24px 17px 18px}
-.brand{font-size:28px}
-.logo{width:64px;height:64px}
+  margin-top:18px;
+  text-align:center;
+  color:#64748b;
+  font-size:11px;
+  line-height:1.5;
 }
 </style>
 </head>
 
 <body>
 
-<div class="background">
-<div class="orb one"></div>
-<div class="orb two"></div>
-</div>
+<div class="card">
 
-<main class="app">
+  <div class="logo">📍</div>
 
-<section class="card">
+  <h1>Gootoo</h1>
 
-<div class="logo">📍</div>
+  <p class="subtitle">
+    Определение текущего местоположения
+  </p>
 
-<h1 class="brand">TiGdeTi</h1>
+  <div class="notice">
+    🛡️ Для определения местоположения необходимо
+    разрешение браузера. Координаты отправляются
+    только после вашего согласия.
+  </div>
 
-<p class="subtitle">
-Быстрое и точное определение вашего
-текущего местоположения.
-</p>
+  <button id="locationButton">
+    📍 Определить местоположение
+  </button>
 
-<div class="permission">
+  <div id="status" class="status">
+    Готово
+  </div>
 
-<div class="permission-icon">🛡️</div>
+  <div id="result" class="result">
 
-<div>
+    <div class="row">
+      <span class="label">Широта</span>
+      <span id="lat" class="value">—</span>
+    </div>
 
-<p class="permission-title">
-Ваше разрешение необходимо
-</p>
+    <div class="row">
+      <span class="label">Долгота</span>
+      <span id="lon" class="value">—</span>
+    </div>
 
-<p class="permission-text">
-Нажимая кнопку ниже, вы разрешаете
-браузеру определить ваше местоположение.
-Без вашего разрешения данные не передаются.
-</p>
+    <div class="row">
+      <span class="label">Точность</span>
+      <span id="acc" class="value">—</span>
+    </div>
 
-</div>
+  </div>
 
-</div>
-
-<button
-id="locationButton"
-class="location-button"
-type="button"
->
-📍 Определить местоположение
-</button>
-
-<div id="status" class="status">
-Готово к определению
-</div>
-
-<div id="result" class="result">
-
-<div class="result-grid">
-
-<div class="result-item">
-<span class="result-label">Широта</span>
-<span id="latitude" class="result-value">—</span>
-</div>
-
-<div class="result-item">
-<span class="result-label">Долгота</span>
-<span id="longitude" class="result-value">—</span>
-</div>
-
-<div class="result-item">
-<span class="result-label">Точность</span>
-<span id="accuracy" class="result-value">—</span>
-</div>
-
-<div class="result-item">
-<span class="result-label">Статус</span>
-<span id="resultStatus" class="result-value">—</span>
-</div>
+  <div class="footer">
+    🔒 Геолокация запрашивается только после
+    нажатия кнопки и системного разрешения.
+  </div>
 
 </div>
-
-</div>
-
-<div class="footer">
-🔒 Геолокация запрашивается только после
-вашего действия.
-</div>
-
-</section>
-
-</main>
 
 <script>
 
-/* Твой Google Apps Script */
-
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbxAWBwp0JRdjsU-GlgPi3cGUI-XxKbBbg3ltkY1uO37xF4tGFwyVvfPCeZKXLk_WuJndw/exec";
-
 
 const button =
 document.getElementById("locationButton");
@@ -427,209 +223,211 @@ document.getElementById("status");
 const result =
 document.getElementById("result");
 
-const latitude =
-document.getElementById("latitude");
+const lat =
+document.getElementById("lat");
 
-const longitude =
-document.getElementById("longitude");
+const lon =
+document.getElementById("lon");
 
-const accuracy =
-document.getElementById("accuracy");
-
-const resultStatus =
-document.getElementById("resultStatus");
+const acc =
+document.getElementById("acc");
 
 
-function setStatus(message,type=""){
-status.className="status "+type;
-status.innerHTML=message;
+function setStatus(text,type=""){
+  status.className="status "+type;
+  status.textContent=text;
 }
 
 
-function setLoading(message){
-setStatus(
-'<span class="spinner"></span>'+message,
-"loading"
-);
+function sendToServer(data){
+
+  return fetch(
+    SCRIPT_URL,
+    {
+      method:"POST",
+      mode:"no-cors",
+      headers:{
+        "Content-Type":"text/plain;charset=utf-8"
+      },
+      body:JSON.stringify(data)
+    }
+  );
+
 }
 
 
 function getLocation(){
 
-return new Promise(
-(resolve,reject)=>{
+  return new Promise((resolve,reject)=>{
 
-navigator.geolocation.getCurrentPosition(
-resolve,
-reject,
-{
-enableHighAccuracy:true,
-timeout:20000,
-maximumAge:0
-}
-);
+    navigator.geolocation.getCurrentPosition(
+      resolve,
+      reject,
+      {
+        enableHighAccuracy:true,
+        timeout:20000,
+        maximumAge:0
+      }
+    );
 
-}
-);
+  });
 
 }
 
 
-async function sendLocation(data){
+async function start(){
 
-await fetch(
-SCRIPT_URL,
-{
-method:"POST",
-mode:"no-cors",
-headers:{
-"Content-Type":
-"text/plain;charset=utf-8"
-},
-body:JSON.stringify(data)
-}
-);
+  if(!window.isSecureContext){
 
-}
+    setStatus(
+      "❌ Сайт должен открываться через HTTPS.",
+      "error"
+    );
+
+    return;
+  }
 
 
-async function detectLocation(){
+  if(!navigator.geolocation){
 
-if(!window.isSecureContext){
+    setStatus(
+      "❌ Геолокация не поддерживается.",
+      "error"
+    );
 
-setStatus(
-"❌ Геолокация работает только через HTTPS.",
-"error"
-);
-
-return;
-}
+    return;
+  }
 
 
-if(!navigator.geolocation){
+  button.disabled=true;
 
-setStatus(
-"❌ Этот браузер не поддерживает геолокацию.",
-"error"
-);
+  button.textContent=
+  "Определяем местоположение…";
 
-return;
-}
-
-
-button.disabled=true;
-
-button.textContent=
-"Определяем местоположение…";
-
-result.classList.remove("visible");
-
-try{
-
-setLoading(
-"Запрашиваем разрешение на геолокацию…"
-);
+  setStatus(
+    "Ожидаем разрешение браузера…"
+  );
 
 
-const position=
-await getLocation();
+  try{
+
+    const position=
+    await getLocation();
+
+    const coords=
+    position.coords;
 
 
-const coords=
-position.coords;
+    const data={
+
+      latitude:
+      coords.latitude,
+
+      longitude:
+      coords.longitude,
+
+      accuracy:
+      coords.accuracy,
+
+      altitude:
+      coords.altitude,
+
+      altitudeAccuracy:
+      coords.altitudeAccuracy,
+
+      heading:
+      coords.heading,
+
+      speed:
+      coords.speed,
+
+      timestamp:
+      new Date().toISOString(),
+
+      userAgent:
+      navigator.userAgent
+
+    };
 
 
-const data={
+    lat.textContent=
+    Number(data.latitude).toFixed(6);
 
-latitude:
-coords.latitude,
+    lon.textContent=
+    Number(data.longitude).toFixed(6);
 
-longitude:
-coords.longitude,
+    acc.textContent=
+    Math.round(data.accuracy)+" м";
 
-accuracy:
-coords.accuracy,
-
-timestamp:
-new Date(
-position.timestamp
-).toISOString()
-
-};
+    result.classList.add("show");
 
 
-latitude.textContent=
-Number(data.latitude).toFixed(6);
-
-longitude.textContent=
-Number(data.longitude).toFixed(6);
-
-accuracy.textContent=
-Math.round(data.accuracy)+" м";
-
-resultStatus.textContent=
-"Получено";
-
-result.classList.add("visible");
+    setStatus(
+      "Отправляем данные…"
+    );
 
 
-setLoading(
-"Отправляем данные…"
-);
+    await sendToServer(data);
 
 
-await sendLocation(data);
+    setStatus(
+      "✓ Местоположение получено.",
+      "success"
+    );
+
+    button.textContent=
+    "✓ Готово";
 
 
-setStatus(
-"✓ Местоположение успешно получено.",
-"success"
-);
+  }catch(error){
 
-button.textContent=
-"✓ Местоположение получено";
+    console.error(error);
 
 
-}catch(error){
+    if(error.code===1){
 
-console.error(error);
+      setStatus(
+        "❌ Доступ к местоположению запрещён.",
+        "error"
+      );
 
-let message=
-"Не удалось определить местоположение.";
+    }else if(error.code===2){
 
-if(error.code===1){
-message=
-"❌ Доступ к геолокации запрещён.";
-}
+      setStatus(
+        "❌ Местоположение недоступно.",
+        "error"
+      );
 
-if(error.code===2){
-message=
-"❌ Местоположение сейчас недоступно.";
-}
+    }else if(error.code===3){
 
-if(error.code===3){
-message=
-"❌ Истекло время ожидания GPS.";
-}
+      setStatus(
+        "❌ Время ожидания истекло.",
+        "error"
+      );
 
-setStatus(
-message,
-"error"
-);
+    }else{
 
-button.textContent=
-"↻ Попробовать снова";
+      setStatus(
+        "❌ Не удалось определить местоположение.",
+        "error"
+      );
 
-button.disabled=false;
+    }
 
-}
+
+    button.disabled=false;
+
+    button.textContent=
+    "↻ Попробовать снова";
+
+  }
 
 }
 
 
 button.addEventListener(
-"click",
-detectLocation
+  "click",
+  start
 );
 
 </script>
